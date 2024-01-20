@@ -12,10 +12,10 @@ import PopoverForm from "./PopoverForm.jsx";
 import {useRef} from "react";
 
 export default function EditDestination(props) {
+export default function EditDestination(props) {
   const { onOpen, onClose, isOpen } = useDisclosure()
   const firstFieldRef = useRef(null)
   const onClick = () => {
-    
     onClose()
     return
   }

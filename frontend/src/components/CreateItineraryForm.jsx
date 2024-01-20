@@ -1,31 +1,30 @@
 import React from 'react'
-import { Stack, Button, ButtonGroup, FormControl, FormLabel, Input } from '@chakra-ui/react'
-import TextInput from '../TextInput.jsx'
+import { Stack, Button, ButtonGroup } from '@chakra-ui/react'
+import TextInput from './TextInput.jsx'
 
-const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
-const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
+const CreateItineraryForm = ({ firstFieldRef, onCancel, onClick, props }) => {
         return (
             <Stack spacing={4}>
                 <FormControl>
                     <TextInput
-                        label='Destination Name'
-                        id='destination_name'
+                        label='Title'
+                        id='title'
                         ref={firstFieldRef}
-                        defaultValue={props.name}
+                        // defaultValue={props.title}
                     />
                 </FormControl>
                 <FormControl>
                     <TextInput 
-                        label='Cost' 
-                        id='destination_cost' 
-                        defaultValue={props.cost}
+                        label='Budget (SGD)' 
+                        id='budget' 
+                        // defaultValue={props.budget}
                     />
                 </FormControl>
                 <FormControl>
                     <TextInput 
-                        label='Notes' 
-                        id='destination_notes' 
-                        defaultValue={props.notes}
+                        label='Country' 
+                        id='country' 
+                        // defaultValue={props.country}
                     />
                 </FormControl>
                 <ButtonGroup display='flex' justifyContent='flex-end'>
@@ -40,4 +39,4 @@ const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
         )
     }
 
-export default PopoverForm
+export default CreateItineraryForm

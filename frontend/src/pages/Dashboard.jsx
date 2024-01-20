@@ -6,6 +6,7 @@ import {
 
 import ItineraryTable from "../components/ItineraryTable.jsx";
 import NavBar from "../components/NavBar.jsx";
+import CreateItineraryPopover from '../components/CreateItineraryPopover.jsx';
 
 export default function Dashboard(props) {
   // const { user } = props;
@@ -15,6 +16,7 @@ export default function Dashboard(props) {
         <NavBar user={'testUser'}/>
         <ItineraryTable/>
       </Flex>
+        <CreateItineraryPopover/>
     </>
   )
 }

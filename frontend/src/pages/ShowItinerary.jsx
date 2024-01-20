@@ -91,11 +91,12 @@ const ShowItinerary = () => {
 									<Td>{destination.cost}</Td>
 									<Td>{destination.notes}</Td>
 									<Td>
-										<EditDestination 
-										name={destination.name}
-										cost={destination.cost}
-										notes={destination.notes}
-										/>	
+										<EditDestination
+											name={destination.name}
+											cost={destination.cost}
+											notes={destination.notes}
+											id={destination.id}
+										/>
 									</Td>
 									<Td>
 										<div style={{ textAlign: "center" }}>
