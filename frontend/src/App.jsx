@@ -9,7 +9,7 @@ import { useState } from "react";
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Login from "./pages/Login.jsx";
-import ShowItinerary from "./pages/showItinerary";
+import ShowItinerary from "./pages/ShowItinerary";
 import Dashboard from "./pages/dashboard";
 import Signup from "./pages/Signup.jsx";
 
@@ -26,7 +26,7 @@ const App = () => {
 				{/* protected, need to login first */}
 				<Route element={<ProtectedRoute />}>
 					<Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/showItinerary/:id" element={<ShowItinerary />} />
+          <Route path="/dashboard/showitinerary/" element={<ShowItinerary />} />
 				</Route>
 			</Routes>
 		</Router>
