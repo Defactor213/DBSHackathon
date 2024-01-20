@@ -11,8 +11,12 @@ import {EditIcon} from "@chakra-ui/icons";
 import PopoverForm from "./PopoverForm.jsx";
 import {useRef} from "react";
 
-export default function EditDestination() {
+export default function EditDestination(props) {
   const { onOpen, onClose, isOpen } = useDisclosure()
+  const onClick = () => {
+    console.log(props)
+    onClose()
+  }
   const firstFieldRef = useRef(null)
   return (
     <div style={{textAlign: "center"}}>
@@ -31,7 +35,7 @@ export default function EditDestination() {
           <FocusLock returnFocus persistentFocus={false}>
             <PopoverArrow/>
             <PopoverCloseButton/>
-            <PopoverForm firstFieldRef={firstFieldRef} onCancel={onClose}/>
+            <PopoverForm firstFieldRef={firstFieldRef} onCancel={onClose} onClick={onClick} props={props}/>
           </FocusLock>
         </PopoverContent>
       </Popover>
