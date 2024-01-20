@@ -1,19 +1,39 @@
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   Divider,
   FormControl,
   FormLabel,
   Heading,
-  HStack,
-  Input,
+  HStack, IconButton,
+  Input, InputGroup, InputRightElement,
   Stack
 } from "@chakra-ui/react";
-import {PasswordField} from "../components/PasswordField.jsx";
+import {useState} from "react";
+import {HiEye, HiEyeOff} from "react-icons/hi";
+import axios from "axios";
+
 
 export default function Login() {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isHidden, setisHidden] = useState(true)
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/user/userLogin', {
+        username: username,
+        lastname:password
+      });
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  const setPasswordVisibility = () => !isHidden ? setisHidden(true) : setisHidden(false)
   return (
     <Container
       maxW="lg"
@@ -70,14 +90,27 @@ export default function Login() {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl>
-                <FormLabel htmlFor="email">Email</FormLabel>
-                <Input id="email" type="email" />
+                <FormLabel htmlFor="username">Username</FormLabel>
+                <Input id="username" type="text" value={username} onChange={e => setUsername(e.value)} />
               </FormControl>
-              <PasswordField />
+              <FormControl>
+                <FormLabel htmlFor="password">Password</FormLabel>
+                <InputGroup>
+
+                  <InputRightElement>
+                    <IconButton
+                      variant="text"
+                      aria-label={isHidden ? 'Mask password' : 'Reveal password'}
+                      icon={isHidden ? <HiEye /> : <HiEyeOff />}
+                      onClick={setPasswordVisibility}
+                    />
+                  </InputRightElement>
+                <Input id="password" type={isHidden ? "password" : "text" } value={password} onChange={e => setPassword(e.value)} />
+                </InputGroup>
+              </FormControl>
             </Stack>
             <HStack justify="space-between">
-              <Checkbox defaultChecked>Remember me</Checkbox>
-              <Button variant="text" size="sm">
+              <Button variant="text" size="sm" onClick={handleLogin}>
                 Forgot password?
               </Button>
             </HStack>
