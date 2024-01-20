@@ -18,9 +18,13 @@ const userLogin = async (req, res) => {
     console.log("data ", data);
 
     if (data.length > 0) {
-      var token = jwt.sign({ username: data[0].username }, "secretkey", {
-        expiresIn: "2 days",
-      });
+      var token = jwt.sign(
+        { username: data[0].username, id: data[0].id },
+        "secretkey",
+        {
+          expiresIn: "2 days",
+        }
+      );
 
       return res.status(200).json({ "jwtToken ": token });
     }

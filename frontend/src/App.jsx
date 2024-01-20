@@ -1,43 +1,51 @@
-import { useState } from "react";
-import "./App.css";
 import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-	Navigate,
-} from "react-router-dom";
-import ProtectedRoute from "./components/protectedRoute";
-
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  Divider,
+  FormControl,
+  FormLabel,
+  Heading,
+  HStack,
+  Input,
+  Stack,
+} from '@chakra-ui/react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { PasswordField } from './components/PasswordField'
+import { useState } from 'react'
+import './App.css'
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import Login from "./pages/Login.jsx";
 import ShowItinerary from "./pages/showItinerary";
+import Dashboard from "./pages/dashboard";
 
-function App() {
 
-	//   <Routes>
-	//   {/* landing page */}
-	//   <Route index element={<Navigate to="/login" />} />
 
-	//   <Route path="/homepage" element={<Homepage />} />
-	//   <Route path="/login" element={<Login />} />
-	//   <Route path="/signup" element={<Signup />} />
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        {/* landing page */}
+        <Route index element={<Navigate to="/login" />} />
 
-	//   {/* protected, need to login first */}
-	//   <Route element={<ProtectedRoute />}>
-	//     <Route path="/create" element={<Create />} />
-	//     <Route path="/read" element={<Read />} />
-	//     <Route path="/update" element={<Update />} />
-	//     <Route path="/delete" element={<Delete />} />
-	//   </Route>
-	// </Routes>
+        <Route path="/login" element={<Login />} />
+				<Route path="/" element={<Dashboard />} />
+        {/*<Route path="/signup" element={<Signup />} />*/}
 
-	return (
-		<Router>
-			<Routes>
-				<Route>
-					<Route path="/" element={<ShowItinerary />} />
-				</Route>
-			</Routes>
-		</Router>
-	);
+        {/* protected, need to login first */}
+        {/*<Route element={<ProtectedRoute />}>*/}
+        {/*  <Route path="/homepage" element={<Homepage />} />*/}
+        {/*  <Route path="/create" element={<Create />} />*/}
+        {/*  <Route path="/read" element={<Read />} />*/}
+        {/*  <Route path="/update" element={<Update />} />*/}
+        {/*  <Route path="/delete" element={<Delete />} />*/}
+        {/*</Route>*/}
+      </Routes>
+    </Router>
+	)
 }
+
+
 
 export default App;
