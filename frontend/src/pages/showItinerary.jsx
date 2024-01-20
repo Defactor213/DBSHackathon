@@ -39,63 +39,68 @@ const ShowItinerary = () => {
 		<div>
 			{/* add header here*/}
 
-			<Container style={{ marginTop: "20px", textAlign: "left" }}>
-				<Heading>Itinerary Details</Heading>
-				{itinerary ? (
-					<>
-						<Text variant="body1">
-							<strong>ID:</strong> {itinerary.id}
-						</Text>
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "space-between",
-							}}>
-							<Heading size="md">Destinations</Heading>
-							<Button onClick={() => navigate("/homepage")}>
-								Back to Itinerary List
-							</Button>
-						</div>
-
-						<Table variant="striped" colorScheme="teal">
-							<Thead>
-								<Tr>
-									<Th>Number</Th>
-									<Th>Name</Th>
-									<Th>Cost</Th>
-									<Th>Notes</Th>
-									<Th>Actions</Th>
+			<Heading style={{ textAlign: "left" }}>Itinerary Details</Heading>
+			{itinerary ? (
+				<>
+					<Text style={{ textAlign: "left" }}>
+						<strong>ID:</strong> {itinerary.id}
+					</Text>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "space-between",
+						}}>
+						<Heading size="md">Destinations</Heading>
+						<Button onClick={() => navigate("/homepage")}>
+							Back to Itinerary List
+						</Button>
+					</div>
+					<Table variant="striped" colorScheme="teal">
+						<Thead>
+							<Tr>
+								<Th>Number</Th>
+								<Th>Name</Th>
+								<Th>Cost</Th>
+								<Th>Notes</Th>
+								<Th>
+									<div style={{ textAlign: "center" }}>
+										Edit
+									</div>
+								</Th>
+								<Th>
+									<div style={{ textAlign: "center" }}>
+										Delete
+									</div>
+								</Th>
+							</Tr>
+						</Thead>
+						<Tbody>
+							{Object.values(itinerary).map((destination) => (
+								<Tr key={destination.id}>
+									<Td>{destination.id}</Td>
+									<Td>{destination.name}</Td>
+									<Td>{destination.cost}</Td>
+									<Td>{destination.notes}</Td>
+									<Td>
+										<Button>Edit</Button>
+									</Td>
+									<Td>
+										<Button colorScheme={"red"}>
+											Delete
+										</Button>
+									</Td>
 								</Tr>
-							</Thead>
-							<Tbody>
-								{Object.values(itinerary).map((destination) => (
-									<Tr key={destination.id}>
-										<Td>{destination.id}</Td>
-										<Td>{destination.name}</Td>
-										<Td>{destination.cost}</Td>
-										<Td>{destination.notes}</Td>
-										{/* both is popup/modal  */}
-										<Td>
-											<div
-												style={{
-													display: "flex",
-													justifyContent:
-														"space-between",
-												}}>
-												<Button style={{marginRight:'10px'}}>Update</Button>
-												<Button>Delete</Button>
-											</div>
-										</Td>
-									</Tr>
-								))}
-							</Tbody>
-						</Table>
-					</>
-				) : (
-					<Text variant="body1">Loading...</Text>
-				)}
-				<br />
-			</Container>
+							))}
+						</Tbody>
+					</Table>
+				</>
+			) : (
+				<Text variant="body1">Loading...</Text>
+			)}
+			<br />
+			<div style={{ textAlign: "right" }}>
+				<Button>Create new Destination</Button>
+			</div>
 		</div>
 	);
 };
