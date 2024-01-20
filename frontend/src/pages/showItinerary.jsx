@@ -4,6 +4,8 @@ import { Text, Container, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
+import DestinationModal from '../components/destinationComponents/DestinationPopover'
+
 
 // const backendUrl = "http://localhost:9000";
 
@@ -118,4 +120,4 @@ const ShowItinerary = () => {
 	);
 };
 
-export default ShowItinerary;
+export default showItinerary
