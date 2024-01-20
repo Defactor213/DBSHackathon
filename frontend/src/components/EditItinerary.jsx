@@ -11,8 +11,8 @@ import {
 import {useRef} from "react";
 
 export default function EditItinerary(props) {
-  const { itinerary } = props
-  const { id, title, budget, country } = itinerary
+  // const { itinerary } = props
+  // const { id, title, budget, country } = itinerary
   const { onOpen, onClose, isOpen } = useDisclosure()
   const firstFieldRef = useRef(null)
   return (

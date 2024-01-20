@@ -1,29 +1,13 @@
-import {Box, Flex, HStack, IconButton, Stack, useColorModeValue, useDisclosure} from "@chakra-ui/react";
+import {Box, Flex, HStack, IconButton, Stack, useColorModeValue, useDisclosure, Link,} from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { useNavigate} from "react-router-dom";
 
-const NavLink = (props) => {
-  let children;
-  ({children} = props);
-  return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      rounded={'md'}
-      _hover={{
-        textDecoration: 'none',
-        bg: useColorModeValue('gray.200', 'gray.700'),
-      }}
-      href={'#'}>
-      {children}
-    </Box>
-  )
-}
 
 const Links = ['Dashboard']
 
 export default function NavBar(props) {
   const username = localStorage.getItem("username")
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -37,9 +21,7 @@ export default function NavBar(props) {
         />
         <HStack spacing={8} alignItems={'center'}>
           <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-            {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
-            ))}
+            <Link href={'/'}>Dashboard</Link>
           </HStack>
         </HStack>
         <Flex alignItems={'center'}>

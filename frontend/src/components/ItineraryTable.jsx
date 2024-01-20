@@ -6,21 +6,6 @@ export default function ItineraryTable(props) {
 
   const navigate = useNavigate()
 
-  // const buttons = [
-  //   {
-  //     text: 'View',
-  //     color: 'green',
-  //     onClick: (id) => navigate(`showitinerary?id=${id}`)
-  //   },
-  //   {
-  //     text: 'Edit',
-  //     color: 'blue',
-  //   },
-  //   {
-  //     text: 'Delete',
-  //     color: 'red'
-  //   },
-  // ]
 
   const tableTitles = ['Title', 'Budget', 'Country', 'Destination', 'Actions'];
   const data = [
@@ -77,6 +62,7 @@ export default function ItineraryTable(props) {
                       <Flex gap={2}>
                             <Button onClick={() => navigate(`showitinerary?id=${row.id}`)}  colorScheme={'green'} variant='outline'>View</Button>
                             <EditItinerary id={row.id}/>
+                        <Button colorScheme={'red'} variant='outline'>Delete</Button>
                       {/*{*/}
                       {/*  buttons.map((button) => (*/}
                       {/*    <Button key={button.text} onClick={() => button.onClick(row.id)}  colorScheme={button.color} variant='outline'>{button.text}</Button>*/}
