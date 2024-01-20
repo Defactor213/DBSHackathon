@@ -58,14 +58,41 @@ const updateDestination = async (req, res) => {
         console.log(error);
         res.status(500).json(error);
     }
+}
 
+const getAllcountry = async (req, res) => {
+    console.log("Country called")
+    try {
+        const country = await query('select * from techtrek24.country');
+        res.status(200).json({"Countries":country});
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+const getCountryName = async (req, res) => {
+    console.log("Country name called")
+    try {
+        //console.log(req);
+        const id = req.params.id;
+        const country = await query('select * from techtrek24.country where id = ?', [id]);
+        res.status(200).json({country});
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
 }
 
 module.exports = {
     createDestination,
     viewDestination,
     deleteDestination,
-    updateDestination
+    updateDestination,
+    getAllcountry,
+    getCountryName
 }
 
 //const claims = await query ('Select * from dbs.projectexpenseclaims where EmployeeID = ?',[requestedEmployeeId]);
