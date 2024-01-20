@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom"; // Make sure to import Lin
 
 const Header = () => {
 	const navigate = useNavigate();
-	const username = localStorage.getItem("username");
+	const firstname = localStorage.getItem("firstname");
+	const lastname = localStorage.getItem("lastname");
 
 	const signOut = () => {
 		// Clear the JWT token from localStorage or any other user-related data
