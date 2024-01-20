@@ -4,6 +4,7 @@ import { Text, Button } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import EditDestination from "../components/destinationComponents/EditDestination.jsx";
+import NavBar from "../components/NavBar.jsx";
 
 
 // const backendUrl = "http://localhost:9000";
@@ -39,6 +40,7 @@ const ShowItinerary = () => {
 
 	return (
 		<div>
+			<NavBar />
 			{/* add header here*/}
 
 			<Heading style={{ textAlign: "left" }}>Itinerary Details</Heading>
@@ -46,15 +48,11 @@ const ShowItinerary = () => {
 				<>
 					<div style={{ textAlign: "left" }}>
 						<Text>
-							<strong>ID:</strong> {itinerary.id}
-						</Text>
-						<Text>
 							<strong>Title:</strong> {itinerary.title}
 						</Text>
 						<Text>
 							<strong>Budget:</strong> {itinerary.budget}
 						</Text>
-						<Button>Edit Itinerary</Button>
 					</div>
 					<div
 						style={{

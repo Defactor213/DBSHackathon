@@ -1,12 +1,16 @@
 import {Table, TableCaption, TableContainer, Tbody, Tr, Td, Th, Thead, Tfoot, Button, Flex} from "@chakra-ui/react";
+import {useNavigate} from "react-router-dom";
 
 export default function ItineraryTable(props) {
+
+  const navigate = useNavigate()
 
   const buttons = [
 
     {
       text: 'View',
-      color: 'green'
+      color: 'green',
+      onClick: (id) => navigate(`showitinerary?id=${id}`)
     },
     {
       text: 'Edit',
@@ -73,7 +77,7 @@ export default function ItineraryTable(props) {
                       <Flex gap={2}>
                       {
                         buttons.map((button) => (
-                          <Button key={button.text} colorScheme={button.color} variant='outline'>{button.text}</Button>
+                          <Button key={button.text} onClick={() => button.onClick(row.id)}  colorScheme={button.color} variant='outline'>{button.text}</Button>
                         ))
                       } </Flex>
                     </Td>

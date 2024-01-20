@@ -1,5 +1,5 @@
 import {Box, Flex, HStack, IconButton, Stack, useColorModeValue, useDisclosure} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, AddIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 
 const NavLink = (props) => {
   let children;
@@ -23,8 +23,8 @@ const NavLink = (props) => {
 const Links = ['Dashboard']
 
 export default function NavBar(props) {
+  const username = localStorage.getItem("username")
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { user } = props;
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
@@ -43,7 +43,7 @@ export default function NavBar(props) {
           </HStack>
         </HStack>
         <Flex alignItems={'center'}>
-          {user}
+          {username}
         </Flex>
       </Flex>
 
