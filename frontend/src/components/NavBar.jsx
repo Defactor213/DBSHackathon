@@ -2,7 +2,6 @@ import {Box, Flex, HStack, IconButton, Stack, useColorModeValue, useDisclosure, 
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { useNavigate} from "react-router-dom";
 
-
 const Links = ['Dashboard']
 
 export default function NavBar(props) {
