@@ -4,10 +4,9 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import EditDestination from "../components/destinationComponents/EditDestination.jsx";
 import NavBar from "../components/NavBar.jsx";
-import {useEffect, useState} from "react";
-import {getRequest} from "../utilites/axios.js";
+import { useEffect, useState } from "react";
+import { delRequest, getRequest } from "../utilites/axios.js";
 import CreateDestinationPopover from "../components/destinationComponents/CreateDestinationPopover.jsx";
-
 
 // const backendUrl = "http://localhost:9000";
 
@@ -15,12 +14,34 @@ const ShowItinerary = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const queryParams = new URLSearchParams(location.search);
-	const id = queryParams.get("id");
+
 	const itinerary = {
 		destination1: { id: 1, name: "marina", cost: "10", notes: "lorem" },
 		destination2: { id: 2, name: "test", cost: "10", notes: "lorem" },
 	};
+	const [destinations, setDestinations] = useState([{}]);
 
+	useEffect(() => {
+		try {
+			const result = getRequest("/destination/viewAll").then((res) => {
+				console.log(res["destinations "]);
+				setDestinations(res["destinations "]);
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	}, []);
+
+	const handleDelete = async (id) => {
+		try {
+			const result = await getRequest(`/destination/delete/${id}`);
+			console.log("DELETE request successful:", result);
+			// Handle the result as needed
+		} catch (error) {
+			// Handle errors
+			console.error("Error making DELETE request:", error);
+		}
+	};
 
 	// useEffect(() => {
 	// 	const fetchItinerary = async () => {
@@ -84,7 +105,7 @@ const ShowItinerary = () => {
 							</Tr>
 						</Thead>
 						<Tbody>
-							{Object.values(itinerary).map((destination) => (
+							{Object.values(destinations).map((destination) => (
 								<Tr key={destination.id}>
 									<Td>{destination.id}</Td>
 									<Td>{destination.name}</Td>

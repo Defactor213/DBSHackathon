@@ -8,7 +8,7 @@ router.get('/viewall',authenticationToken, destinationcontroller.viewDestination
 router.post('/create',authenticationToken, destinationcontroller.createDestination);
 // router.get('/delete/:destinationid',destinationcontroller.deleteDestination);
 router.get('/delete/:destinationid',authenticationToken,destinationcontroller.deleteDestination);
-router.patch('/update',authenticationToken,destinationcontroller.updateDestination);
+router.post('/update',authenticationToken,destinationcontroller.updateDestination);
 router.get('/getallcountry',authenticationToken,destinationcontroller.getAllcountry); 
 router.get('/getcountry/:id',authenticationToken,destinationcontroller.getCountryName); 
 

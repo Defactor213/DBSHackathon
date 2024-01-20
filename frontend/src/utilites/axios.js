@@ -18,6 +18,7 @@ const getRequest = async (path) => {
 
 const postRequest = async (path, data) => {
   try {
+    console.log(url + path)
     const response = await axios.post(`${url}${path}`, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
