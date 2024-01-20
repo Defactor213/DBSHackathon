@@ -8,7 +8,7 @@ import {
 	Input,
 } from "@chakra-ui/react";
 import TextInput from "../TextInput.jsx";
-import { patchRequest } from "../../utilites/axios.js";
+import { postRequest } from "../../utilites/axios.js";
 
 const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
 	const [destID, setDestID] = useState(props.id); // [id, setter
@@ -24,7 +24,7 @@ const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
 				destination_notes:
 					document.getElementById("destination_notes").value,
 			};
-			const result = await patchRequest(path, postData);
+			const result = await postRequest(path, postData);
 			console.log("POST request successful:", result);
 			// Handle the result as needed
 		} catch (error) {
