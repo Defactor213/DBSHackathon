@@ -1,20 +1,15 @@
-import { useState, useEffect, useRef} from "react";
+
 import { useLocation, useNavigate } from "react-router-dom";
-import { Text, Container, Button } from "@chakra-ui/react";
-import axios from "axios";
+import { Text, Button } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
-import { EditIcon } from '@chakra-ui/icons';
-import { Popover, PopoverTrigger, IconButton, PopoverContent, FocusLock, PopoverArrow, PopoverCloseButton } from '@chakra-ui/react'
-import PopoverForm from '../components/destinationComponents/PopoverForm'
-import { useDisclosure } from '@chakra-ui/react'
+import EditDestination from "../components/EditDestination.jsx";
 
 
 // const backendUrl = "http://localhost:9000";
 
 const ShowItinerary = () => {
-	const { onOpen, onClose, isOpen } = useDisclosure()
-	const firstFieldRef = useRef(null)
+
 	const location = useLocation();
 	const navigate = useNavigate();
 	const queryParams = new URLSearchParams(location.search);
@@ -98,27 +93,7 @@ const ShowItinerary = () => {
 									<Td>{destination.cost}</Td>
 									<Td>{destination.notes}</Td>
 									<Td>
-										<div style={{ textAlign: "center" }}>
-										<Popover
-											isOpen={isOpen}
-											initialFocusRef={firstFieldRef}
-											onOpen={onOpen}
-											onClose={onClose}
-											placement='right'
-											closeOnBlur={false}
-										>
-											<PopoverTrigger>
-												<IconButton size='sm' icon={<EditIcon />} />
-											</PopoverTrigger>
-											<PopoverContent p={5}>
-												<FocusLock returnFocus persistentFocus={false}>
-													<PopoverArrow />
-													<PopoverCloseButton />
-													<PopoverForm firstFieldRef={firstFieldRef} onCancel={onClose} />
-												</FocusLock>
-											</PopoverContent>
-										</Popover>
-										</div>
+										<EditDestination/>
 									</Td>
 									<Td>
 										<div style={{ textAlign: "center" }}>
