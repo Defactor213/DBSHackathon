@@ -1,22 +1,11 @@
-import {Table, TableCaption, TableContainer, Tbody, Tr, Td, Th, Thead, Tfoot, Button, Flex} from "@chakra-ui/react";
+import {Table, TableContainer, Tbody, Tr, Td, Th, Thead, Tfoot, Button, Flex} from "@chakra-ui/react";
+import {useNavigate} from "react-router-dom";
+import EditItinerary from "./EditItinerary.jsx";
 
 export default function ItineraryTable(props) {
 
-  const buttons = [
+  const navigate = useNavigate()
 
-    {
-      text: 'View',
-      color: 'green'
-    },
-    {
-      text: 'Edit',
-      color: 'blue'
-    },
-    {
-      text: 'Delete',
-      color: 'red'
-    },
-  ]
 
   const tableTitles = ['Title', 'Budget', 'Country', 'Destination', 'Actions'];
   const data = [
@@ -71,11 +60,15 @@ export default function ItineraryTable(props) {
 
                     <Td>
                       <Flex gap={2}>
-                      {
-                        buttons.map((button) => (
-                          <Button key={button.text} colorScheme={button.color} variant='outline'>{button.text}</Button>
-                        ))
-                      } </Flex>
+                            <Button onClick={() => navigate(`showitinerary?id=${row.id}`)}  colorScheme={'green'} variant='outline'>View</Button>
+                            <EditItinerary id={row.id}/>
+                        <Button colorScheme={'red'} variant='outline'>Delete</Button>
+                      {/*{*/}
+                      {/*  buttons.map((button) => (*/}
+                      {/*    <Button key={button.text} onClick={() => button.onClick(row.id)}  colorScheme={button.color} variant='outline'>{button.text}</Button>*/}
+                      {/*  ))*/}
+                      {/*} */}
+                      </Flex>
                     </Td>
 
                 </Tr>

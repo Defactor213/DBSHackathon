@@ -19,10 +19,12 @@ import {
 } from "react-router-dom";
 import { PasswordField } from "./components/PasswordField";
 import { useState } from "react";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+import './App.css'
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Login from "./pages/Login.jsx";
-import ShowItinerary from "./pages/showItinerary";
+import ShowItinerary from "./pages/ShowItinerary.jsx";
 import Dashboard from "./pages/dashboard";
 import Signup from "./pages/Signup.jsx";
 
