@@ -42,9 +42,18 @@ const ShowItinerary = () => {
 			<Heading style={{ textAlign: "left" }}>Itinerary Details</Heading>
 			{itinerary ? (
 				<>
-					<Text style={{ textAlign: "left" }}>
-						<strong>ID:</strong> {itinerary.id}
-					</Text>
+					<div style={{ textAlign: "left" }}>
+						<Text>
+							<strong>ID:</strong> {itinerary.id}
+						</Text>
+						<Text>
+							<strong>Title:</strong> {itinerary.title}
+						</Text>
+						<Text>
+							<strong>Budget:</strong> {itinerary.budget}
+						</Text>
+						<Button>Edit Itinerary</Button>
+					</div>
 					<div
 						style={{
 							display: "flex",
@@ -82,12 +91,16 @@ const ShowItinerary = () => {
 									<Td>{destination.cost}</Td>
 									<Td>{destination.notes}</Td>
 									<Td>
-										<Button>Edit</Button>
+										<div style={{ textAlign: "center" }}>
+											<Button>Edit</Button>
+										</div>
 									</Td>
 									<Td>
-										<Button colorScheme={"red"}>
-											Delete
-										</Button>
+										<div style={{ textAlign: "center" }}>
+											<Button colorScheme={"red"}>
+												Delete
+											</Button>
+										</div>
 									</Td>
 								</Tr>
 							))}
