@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+
 import { useLocation, useNavigate } from "react-router-dom";
-import { Text, Container, Button } from "@chakra-ui/react";
-import axios from "axios";
+import { Text, Button } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
+import EditDestination from "../components/destinationComponents/EditDestination.jsx";
+
 
 // const backendUrl = "http://localhost:9000";
 
 const ShowItinerary = () => {
+
 	const location = useLocation();
 	const navigate = useNavigate();
 	const queryParams = new URLSearchParams(location.search);
@@ -39,65 +41,81 @@ const ShowItinerary = () => {
 		<div>
 			{/* add header here*/}
 
-			<Container style={{ marginTop: "20px", textAlign: "left" }}>
-				<Heading>Itinerary Details</Heading>
-				{itinerary ? (
-					<>
-						<Text variant="body1">
+			<Heading style={{ textAlign: "left" }}>Itinerary Details</Heading>
+			{itinerary ? (
+				<>
+					<div style={{ textAlign: "left" }}>
+						<Text>
 							<strong>ID:</strong> {itinerary.id}
 						</Text>
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "space-between",
-							}}>
-							<Heading size="md">Destinations</Heading>
-							<Button onClick={() => navigate("/homepage")}>
-								Back to Itinerary List
-							</Button>
-						</div>
-
-						<Table variant="striped" colorScheme="teal">
-							<Thead>
-								<Tr>
-									<Th>Number</Th>
-									<Th>Name</Th>
-									<Th>Cost</Th>
-									<Th>Notes</Th>
-									<Th>Actions</Th>
+						<Text>
+							<strong>Title:</strong> {itinerary.title}
+						</Text>
+						<Text>
+							<strong>Budget:</strong> {itinerary.budget}
+						</Text>
+						<Button>Edit Itinerary</Button>
+					</div>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "space-between",
+						}}>
+						<Heading size="md">Destinations</Heading>
+						<Button onClick={() => navigate("/homepage")}>
+							Back to Itinerary List
+						</Button>
+					</div>
+					<Table variant="striped" colorScheme="teal">
+						<Thead>
+							<Tr>
+								<Th>Number</Th>
+								<Th>Name</Th>
+								<Th>Cost</Th>
+								<Th>Notes</Th>
+								<Th>
+									<div style={{ textAlign: "center" }}>
+										Edit
+									</div>
+								</Th>
+								<Th>
+									<div style={{ textAlign: "center" }}>
+										Delete
+									</div>
+								</Th>
+							</Tr>
+						</Thead>
+						<Tbody>
+							{Object.values(itinerary).map((destination) => (
+								<Tr key={destination.id}>
+									<Td>{destination.id}</Td>
+									<Td>{destination.name}</Td>
+									<Td>{destination.cost}</Td>
+									<Td>{destination.notes}</Td>
+									<Td>
+										<EditDestination/>
+									</Td>
+									<Td>
+										<div style={{ textAlign: "center" }}>
+											<Button colorScheme={"red"}>
+												Delete
+											</Button>
+										</div>
+									</Td>
 								</Tr>
-							</Thead>
-							<Tbody>
-								{Object.values(itinerary).map((destination) => (
-									<Tr key={destination.id}>
-										<Td>{destination.id}</Td>
-										<Td>{destination.name}</Td>
-										<Td>{destination.cost}</Td>
-										<Td>{destination.notes}</Td>
-										{/* both is popup/modal  */}
-										<Td>
-											<div
-												style={{
-													display: "flex",
-													justifyContent:
-														"space-between",
-												}}>
-												<Button style={{marginRight:'10px'}}>Update</Button>
-												<Button>Delete</Button>
-											</div>
-										</Td>
-									</Tr>
-								))}
-							</Tbody>
-						</Table>
-					</>
-				) : (
-					<Text variant="body1">Loading...</Text>
-				)}
-				<br />
-			</Container>
+							))}
+						</Tbody>
+					</Table>
+				</>
+			) : (
+				<Text variant="body1">Loading...</Text>
+			)}
+			<br />
+			<div style={{ textAlign: "right" }}>
+				<Button>Create new Destination</Button>
+			</div>
 		</div>
 	);
 };
 
-export default ShowItinerary;
+export default ShowItinerary
