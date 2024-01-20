@@ -4,7 +4,7 @@ import { useDisclosure } from '@chakra-ui/react'
 import { EditIcon } from '@chakra-ui/icons' // Add this line
 import PopoverForm from './PopoverForm'
 
-const DestinationPopover = () => {
+const DestinationPopover = (props) => {
 
   const { onOpen, onClose, isOpen } = useDisclosure()
   const firstFieldRef = React.useRef(null)
@@ -28,7 +28,7 @@ const DestinationPopover = () => {
           <FocusLock returnFocus persistentFocus={false}>
             <PopoverArrow />
             <PopoverCloseButton />
-            <PopoverForm firstFieldRef={firstFieldRef} onCancel={onClose} />
+            <PopoverForm firstFieldRef={firstFieldRef} onCancel={onClose} props={props}/>
           </FocusLock>
         </PopoverContent>
       </Popover>

@@ -42,7 +42,6 @@ const delRequest = async (path) => {
   } catch (error) {
     console.log(error)
   }
-
 }
 
 export {

@@ -14,7 +14,7 @@ const getUserItineraries = async (req, res) => {
             itinerary.user_id,
             itinerary.budget,
             itinerary.title,
-            GROUP_CONCAT(DISTINCT destination.name) AS destination_names
+            GROUP_CONCAT(DISTINCT destination.name SEPARATOR ', ') AS destination_names
             FROM
                 itinerary
             JOIN

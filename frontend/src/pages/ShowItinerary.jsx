@@ -7,6 +7,7 @@ import EditDestination from "../components/destinationComponents/EditDestination
 import NavBar from "../components/NavBar.jsx";
 import {useEffect, useState} from "react";
 import {getRequest} from "../utilites/axios.js";
+import CreateDestinationPopover from "../components/destinationComponents/CreateDestinationPopover.jsx";
 
 
 // const backendUrl = "http://localhost:9000";
@@ -117,7 +118,7 @@ const ShowItinerary = () => {
 			)}
 			<br />
 			<div style={{ textAlign: "right" }}>
-				<Button>Create new Destination</Button>
+				<CreateDestinationPopover />
 			</div>
 		</div>
 	);
