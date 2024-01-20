@@ -31,6 +31,21 @@ const postRequest = async (path, data) => {
   }
 };
 
+const patchRequest = async (path, data) => {
+  try {
+    const response = await axios.patch(`${url}${path}`, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    // You may want to rethrow the error or handle it appropriately based on your application's requirements
+    throw error;
+  }
+};
+
 const delRequest = async (path) => {
   try {
     const response = await axios.delete(`${url}${path}`, {
@@ -47,5 +62,6 @@ const delRequest = async (path) => {
 export {
   getRequest,
   delRequest,
-  postRequest
+  postRequest,
+  patchRequest
 }

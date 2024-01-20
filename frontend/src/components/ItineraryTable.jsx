@@ -5,12 +5,12 @@ import {useEffect, useState} from "react";
 import {delRequest, getRequest} from "../utilites/axios.js";
 
 export default function ItineraryTable(props) {
-
+  const {itinerary, loadItinerary, setItinerary} = props
   const navigate = useNavigate()
 
-  const [itinerary, setItinerary] = useState([])
-
-
+  // const [itinerary, setItinerary] = useState([])
+  //
+  //
   const deleteItinerary = (id) => {
     try {
       const result = delRequest(`/itinerary/deleteItinerary/${id}`).then((res) => {
@@ -23,15 +23,19 @@ export default function ItineraryTable(props) {
     }
   }
 
+  // const loadItinerary = () => {
+  //   try {
+  //     const result = getRequest('/itinerary/getItineraries/user').then((res) => {
+  //       console.log(res.itinerary)
+  //       setItinerary(res.itinerary)
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
   useEffect(() => {
-    try {
-      const result = getRequest('/itinerary/getItineraries/user').then((res) => {
-        console.log(res.itinerary)
-        setItinerary(res.itinerary)
-      })
-    } catch (err) {
-      console.log(err)
-    }
+    loadItinerary()
   },[])
 
   const tableTitles = ['Title', 'Budget', 'Country', 'Destination', 'Actions'];
@@ -54,13 +58,13 @@ export default function ItineraryTable(props) {
                 <Tr key={row.itinerary_id}>
                   <Td>{row.title}</Td>
                   <Td>{`$${row.budget}`}</Td>
-                  <Td>{row.country_id}</Td>
+                  <Td>{row.country_id === 1 ? 'Singapore' : 'Not Found'}</Td>
                   <Td>{row.destination_names}</Td>
 
                     <Td>
                       <Flex gap={2}>
                             <Button onClick={() => navigate(`showitinerary?id=${row.itinerary_id}`)}  colorScheme={'green'} variant='outline'>View</Button>
-                            <EditItinerary itinerary={row}/>
+                            <EditItinerary itinerary={row} loadItinerary={loadItinerary}/>
                         <Button colorScheme={'red'} variant='outline' onClick={() => deleteItinerary(row.itinerary_id)}>Delete</Button>
                       </Flex>
                     </Td>
