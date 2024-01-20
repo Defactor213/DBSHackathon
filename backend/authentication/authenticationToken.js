@@ -14,7 +14,7 @@ const authenticationToken = async (req, res, next) => {
     }
   });
 
-  console.log("Decoded user ", user);
+//   console.log("Decoded user ", user);
   console.log("Request method ", req.method);
 
   req.user = user;
