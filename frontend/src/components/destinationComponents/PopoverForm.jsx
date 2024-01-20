@@ -1,11 +1,7 @@
-import React from 'react'
 import { Stack, Button, ButtonGroup, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import TextInput from '../TextInput.jsx'
 
 const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
-    const [destName, setDestName] = useState(props.name)
-    const [destCost, setDestCost] = useState(props.cost)
-    const [destNotes, setDestNotes] = useState(props.notes)
     return (
         <Stack spacing={4}>
                 <TextInput

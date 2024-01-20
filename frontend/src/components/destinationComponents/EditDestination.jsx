@@ -9,11 +9,14 @@ import {
 } from "@chakra-ui/react";
 import {EditIcon} from "@chakra-ui/icons";
 import PopoverForm from "./PopoverForm.jsx";
-import {useRef} from "react";
+import {useRef, useState} from "react";
 
 export default function EditDestination(props) {
   const { onOpen, onClose, isOpen } = useDisclosure()
   const firstFieldRef = useRef(null)
+  const [destName, setDestName] = useState(props.name)
+  const [destCost, setDestCost] = useState(props.cost)
+  const [destNotes, setDestNotes] = useState(props.notes)
   const onClick = () => {
     onClose()
     return
