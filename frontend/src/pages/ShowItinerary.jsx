@@ -4,7 +4,10 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import EditDestination from "../components/destinationComponents/EditDestination.jsx";
 import NavBar from "../components/NavBar.jsx";
-import { getRequest } from "../utilites/axios.js";
+import CreateDestinationPopover from "../components/destinationComponents/CreateDestinationPopover.jsx";
+
+
+// const backendUrl = "http://localhost:9000";
 
 const ShowItinerary = () => {
 	const location = useLocation();
@@ -107,7 +110,7 @@ const ShowItinerary = () => {
 			)}
 			<br />
 			<div style={{ textAlign: "right" }}>
-				<Button>Create new Destination</Button>
+				<CreateDestinationPopover />
 			</div>
 		</div>
 	);
