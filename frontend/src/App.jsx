@@ -11,7 +11,6 @@ import ProtectedRoute from "./components/protectedRoute";
 import ShowItinerary from "./pages/showItinerary";
 
 function App() {
-	const [count, setCount] = useState(0);
 
 	//   <Routes>
 	//   {/* landing page */}
