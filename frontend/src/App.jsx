@@ -7,8 +7,8 @@ import {
 	Navigate,
 } from "react-router-dom";
 import ProtectedRoute from "./components/protectedRoute";
-
 import ShowItinerary from "./pages/showItinerary";
+import Dashboard from "./pages/dashboard";
 
 function App() {
 
@@ -33,7 +33,8 @@ function App() {
 		<Router>
 			<Routes>
 				<Route>
-					<Route path="/" element={<ShowItinerary />} />
+					<Route path="/" element={<Dashboard />} />
+					{/*<Route path="/" element={<ShowItinerary />} />*/}
 				</Route>
 			</Routes>
 		</Router>
