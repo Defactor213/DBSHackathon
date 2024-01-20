@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 require("dotenv").config();
 
 const pool = mysql.createPool({
-  host: "localhost:3006",
+  host: "localhost",
   user: "root",
   password: "password",
   database: "techtrek24",
