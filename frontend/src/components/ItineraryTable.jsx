@@ -1,50 +1,43 @@
 import {Table, TableContainer, Tbody, Tr, Td, Th, Thead, Tfoot, Button, Flex} from "@chakra-ui/react";
 import {useNavigate} from "react-router-dom";
 import EditItinerary from "./EditItinerary.jsx";
-import {useEffect} from "react";
-import {getRequest} from "../utilites/axios.js";
+import {useEffect, useState} from "react";
+import {delRequest, getRequest} from "../utilites/axios.js";
 
 export default function ItineraryTable(props) {
 
   const navigate = useNavigate()
 
+  const [itinerary, setItinerary] = useState([])
+
+
+  const deleteItinerary = (id) => {
+    try {
+      const result = delRequest(`/itinerary/deleteItinerary/${id}`).then((res) => {
+        setItinerary((prev) =>
+          itinerary.filter((itinerary) => itinerary.itinerary_id !== id)
+        )
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
-    const result = getRequest('/itinerary/getItineraries/user')
-    console.log(result)
+    try {
+      const result = getRequest('/itinerary/getItineraries/user').then((res) => {
+        console.log(res.itinerary)
+        setItinerary(res.itinerary)
+      })
+    } catch (err) {
+      console.log(err)
+    }
   },[])
 
   const tableTitles = ['Title', 'Budget', 'Country', 'Destination', 'Actions'];
-  const data = [
-    {
-      id: 1,
-      title: 'First Trip',
-      budget: '10.00',
-      country: 'Singapore',
-      destination: ['Marina Bay Sands', 'Gardens by the Bay']
-    },
-    {
-      id: 2,
-      title: 'Second Trip',
-      budget: '20.00',
-      country: 'Singapore',
-      destination: ['Marina Bay Sands', 'Gardens by the Bay']
-    },
-    {
-      id: 3,
-      title: 'Third Trip',
-      budget: '30.00',
-      country: 'Singapore',
-      destination: ['Marina Bay Sands', 'Gardens by the Bay']
-    }
-  ]
+
 
   return (
-    // <Flex flexDirection='column' borderColor={'white'} border={1} borderWidth={1}>
-    //   <Heading size='lg'>Itinerary Title</Heading>
-    //   <Text>Budget</Text>
-    //   <Text>Country</Text>
-    //
-    // </Flex>
     <>
       <TableContainer>
         <Table variant='simple'>
@@ -57,23 +50,18 @@ export default function ItineraryTable(props) {
           </Thead>
           <Tbody>
             {
-              data.map((row) => (
-                <Tr key={row.title}>
+              itinerary.map((row) => (
+                <Tr key={row.itinerary_id}>
                   <Td>{row.title}</Td>
                   <Td>{`$${row.budget}`}</Td>
-                  <Td>{row.country}</Td>
-                  <Td>{row.destination.join(", ")}</Td>
+                  <Td>{row.country_id}</Td>
+                  <Td>{row.destination_names}</Td>
 
                     <Td>
                       <Flex gap={2}>
-                            <Button onClick={() => navigate(`showitinerary?id=${row.id}`)}  colorScheme={'green'} variant='outline'>View</Button>
+                            <Button onClick={() => navigate(`showitinerary?id=${row.itinerary_id}`)}  colorScheme={'green'} variant='outline'>View</Button>
                             <EditItinerary itinerary={row}/>
-                        <Button colorScheme={'red'} variant='outline'>Delete</Button>
-                      {/*{*/}
-                      {/*  buttons.map((button) => (*/}
-                      {/*    <Button key={button.text} onClick={() => button.onClick(row.id)}  colorScheme={button.color} variant='outline'>{button.text}</Button>*/}
-                      {/*  ))*/}
-                      {/*} */}
+                        <Button colorScheme={'red'} variant='outline' onClick={() => deleteItinerary(row.itinerary_id)}>Delete</Button>
                       </Flex>
                     </Td>
 

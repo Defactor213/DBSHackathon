@@ -5,6 +5,8 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import EditDestination from "../components/destinationComponents/EditDestination.jsx";
 import NavBar from "../components/NavBar.jsx";
+import {useEffect, useState} from "react";
+import {getRequest} from "../utilites/axios.js";
 
 
 // const backendUrl = "http://localhost:9000";
@@ -19,7 +21,7 @@ const ShowItinerary = () => {
 		destination1: { id: 1, name: "marina", cost: "10", notes: "lorem" },
 		destination2: { id: 2, name: "test", cost: "10", notes: "lorem" },
 	};
-	// const [itinerary, setitinerary] = useState("lorem ipsum");
+
 
 	// useEffect(() => {
 	// 	const fetchItinerary = async () => {

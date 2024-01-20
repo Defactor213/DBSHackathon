@@ -8,7 +8,8 @@ import {
     PopoverTrigger, useDisclosure
   } from "@chakra-ui/react";
 import CreateItineraryForm from "./CreateItineraryForm";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
+import {getRequest} from "../utilites/axios.js";
   
 export default function CreateItineraryPopover(props) {
 const { onOpen, onClose, isOpen } = useDisclosure()
