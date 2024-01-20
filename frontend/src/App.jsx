@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import { useState } from 'react'
+import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./components/protectedRoute";
 
-import Homepage from "./views/homepage";
-import Login from "./views/login";
-import Signup from "./views/signup";
-
-import Create from "./views/crud/create";
-import Read from "./views/crud/read";
-import Update from "./views/crud/update";
-import Delete from "./views/crud/delete";
 
 function App() {
-	return (
+  const [count, setCount] = useState(0)
+
+  return (
 		<Router>
 			<Routes>
 				{/* landing page */}
@@ -31,7 +26,7 @@ function App() {
 				</Route>
 			</Routes>
 		</Router>
-	);
+  )
 }
 
-export default App;
+export default App

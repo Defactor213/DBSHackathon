@@ -1,5 +1,6 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+// change to chakraUI
+// import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom"; // Make sure to import Link from react-router-dom
 
 const Header = () => {
