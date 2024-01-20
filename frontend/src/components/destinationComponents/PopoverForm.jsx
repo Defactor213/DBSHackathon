@@ -3,7 +3,6 @@ import { Stack, Button, ButtonGroup, FormControl, FormLabel, Input } from '@chak
 import TextInput from '../TextInput.jsx'
 
 const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
-const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
         return (
             <Stack spacing={4}>
                 <FormControl>
