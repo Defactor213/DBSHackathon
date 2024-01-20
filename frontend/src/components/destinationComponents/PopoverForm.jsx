@@ -1,27 +1,35 @@
-import React from 'react'
-import { Stack, Button, ButtonGroup } from '@chakra-ui/react'
-import TextInput from './TextInput'
+import { Stack, Button, ButtonGroup, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import TextInput from '../TextInput.jsx'
 
-const PopoverForm = ({ firstFieldRef, onCancel }) => {
-        return (
-            <Stack spacing={4}>
+const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
+    return (
+        <Stack spacing={4}>
                 <TextInput
-                    label='Destination'
-                    id='destination'
+                    label='Destination Name'
+                    id='destination_name'
                     ref={firstFieldRef}
-                    defaultValue='Destination'
+                    defaultValue={props.name}
                 />
-                <TextInput label='Name' id='-name' defaultValue='A' />
-                <ButtonGroup display='flex' justifyContent='flex-end'>
-                    <Button variant='outline' onClick={onCancel}>
-                        Cancel
-                    </Button>
-                    <Button colorScheme='teal'>
-                        Save
-                    </Button>
-                </ButtonGroup>
-            </Stack>
-        )
-    }
+                <TextInput 
+                    label='Cost' 
+                    id='destination_cost' 
+                    defaultValue={props.cost}
+                />
+                <TextInput 
+                    label='Notes' 
+                    id='destination_notes' 
+                    defaultValue={props.notes}
+                />
+            <ButtonGroup display='flex' justifyContent='flex-end'>
+                <Button variant='outline' onClick={onCancel}>
+                    Cancel
+                </Button>
+                <Button colorScheme='teal' onClick={onClick}>
+                    Save
+                </Button>
+            </ButtonGroup>
+        </Stack>
+    )
+}
 
 export default PopoverForm

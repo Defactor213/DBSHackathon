@@ -1,26 +1,17 @@
-import {Table, TableCaption, TableContainer, Tbody, Tr, Td, Th, Thead, Tfoot, Button, Flex} from "@chakra-ui/react";
+import {Table, TableContainer, Tbody, Tr, Td, Th, Thead, Tfoot, Button, Flex} from "@chakra-ui/react";
 import {useNavigate} from "react-router-dom";
+import EditItinerary from "./EditItinerary.jsx";
+import {useEffect} from "react";
+import {getRequest} from "../utilites/axios.js";
 
 export default function ItineraryTable(props) {
 
   const navigate = useNavigate()
 
-  const buttons = [
-
-    {
-      text: 'View',
-      color: 'green',
-      onClick: (id) => navigate(`showitinerary?id=${id}`)
-    },
-    {
-      text: 'Edit',
-      color: 'blue'
-    },
-    {
-      text: 'Delete',
-      color: 'red'
-    },
-  ]
+  useEffect(() => {
+    const result = getRequest('/itinerary/getItineraries/user')
+    console.log(result)
+  },[])
 
   const tableTitles = ['Title', 'Budget', 'Country', 'Destination', 'Actions'];
   const data = [
@@ -75,11 +66,15 @@ export default function ItineraryTable(props) {
 
                     <Td>
                       <Flex gap={2}>
-                      {
-                        buttons.map((button) => (
-                          <Button key={button.text} onClick={() => button.onClick(row.id)}  colorScheme={button.color} variant='outline'>{button.text}</Button>
-                        ))
-                      } </Flex>
+                            <Button onClick={() => navigate(`showitinerary?id=${row.id}`)}  colorScheme={'green'} variant='outline'>View</Button>
+                            <EditItinerary itinerary={row}/>
+                        <Button colorScheme={'red'} variant='outline'>Delete</Button>
+                      {/*{*/}
+                      {/*  buttons.map((button) => (*/}
+                      {/*    <Button key={button.text} onClick={() => button.onClick(row.id)}  colorScheme={button.color} variant='outline'>{button.text}</Button>*/}
+                      {/*  ))*/}
+                      {/*} */}
+                      </Flex>
                     </Td>
 
                 </Tr>
