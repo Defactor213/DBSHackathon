@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Stack, Button, ButtonGroup, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import TextInput from '../TextInput.jsx'
 
-const CreateDestinationForm = ({ firstFieldRef, onCancel }) => {
+const CreateDestinationForm = ({ firstFieldRef, onCancel, onClose }) => {
     const [destName, setDestName] = useState('')
     const [destCost, setDestCost] = useState('')
     const [destNotes, setDestNotes] = useState('')

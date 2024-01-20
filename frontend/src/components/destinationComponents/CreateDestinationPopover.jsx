@@ -33,7 +33,9 @@ import CreateDestinationForm from "./CreateDestinationForm.jsx";
               <CreateDestinationForm 
                 firstFieldRef={firstFieldRef} 
                 onCancel={onClose} 
-                props={props}/>
+                props={props}
+                onClose={onClose}
+                />
             </FocusLock>
           </PopoverContent>
         </Popover>
