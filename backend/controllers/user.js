@@ -1,5 +1,4 @@
 const { pool } = require("../database/db");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const util = require("util");
 
@@ -17,15 +16,7 @@ const userLogin = async (req, res) => {
       [username, password]
     );
     console.log("data ", data);
-    // if (passwordMatch) {
-    //     const jwtToken = jwt.sign(
-    //       { employeeId: user[0].employee_id },
-    //       "secretkey",
-    //       {
-    //         expiresIn: "2 days",
-    //       }
-    //     );
-    //     return res.status(200).json({ jwtToken: jwtToken });
+
     if (data.length > 0) {
       var token = jwt.sign({ username: data[0].username }, "secretkey", {
         expiresIn: "2 days",
