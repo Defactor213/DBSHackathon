@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Text, Button } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
-import EditDestination from "../components/EditDestination.jsx";
+import EditDestination from "../components/destinationComponents/EditDestination.jsx";
 
 
 // const backendUrl = "http://localhost:9000";

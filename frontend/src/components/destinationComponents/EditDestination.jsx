@@ -8,7 +8,7 @@ import {
   PopoverTrigger, useDisclosure
 } from "@chakra-ui/react";
 import {EditIcon} from "@chakra-ui/icons";
-import PopoverForm from "./destinationComponents/PopoverForm.jsx";
+import PopoverForm from "./PopoverForm.jsx";
 import {useRef} from "react";
 
 export default function EditDestination() {
