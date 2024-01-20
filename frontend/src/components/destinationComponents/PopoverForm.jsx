@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Stack, Button, ButtonGroup, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import TextInput from '../TextInput.jsx'
 
-const PopoverForm = ({ firstFieldRef, onCancel, props }) => {
+const PopoverForm = ({ firstFieldRef, onCancel, onClose, props }) => {
     const [destID, setDestID] = useState(props.id) // [id, setter
     const [destName, setDestName] = useState(props.name)
     const [destCost, setDestCost] = useState(props.cost)
