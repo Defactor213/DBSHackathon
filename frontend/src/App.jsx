@@ -8,9 +8,10 @@ import {
 } from "react-router-dom";
 import ProtectedRoute from "./components/protectedRoute";
 
-import ShowItinerary from "./pages/ShowItinerary";
+import ShowItinerary from "./pages/showItinerary";
 
 function App() {
+
 	//   <Routes>
 	//   {/* landing page */}
 	//   <Route index element={<Navigate to="/login" />} />
