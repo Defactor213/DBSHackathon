@@ -18,6 +18,7 @@ import './App.css'
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Login from "./pages/Login.jsx";
 import ShowItinerary from "./pages/showItinerary";
+import Dashboard from "./pages/dashboard";
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route index element={<Navigate to="/login" />} />
 
         <Route path="/login" element={<Login />} />
+				<Route path="/" element={<Dashboard />} />
         {/*<Route path="/signup" element={<Signup />} />*/}
 
         {/* protected, need to login first */}
@@ -40,7 +42,8 @@ const App = () => {
         {/*  <Route path="/delete" element={<Delete />} />*/}
         {/*</Route>*/}
       </Routes>
-    </Router>)
+    </Router>
+	)
 }
 
 
