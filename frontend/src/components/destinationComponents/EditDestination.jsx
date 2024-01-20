@@ -13,11 +13,11 @@ import {useRef} from "react";
 
 export default function EditDestination(props) {
   const { onOpen, onClose, isOpen } = useDisclosure()
-  const onClick = () => {
-    console.log(props)
-    onClose()
-  }
   const firstFieldRef = useRef(null)
+  const onClick = () => {
+    onClose()
+    return
+  }
   return (
     <div style={{textAlign: "center"}}>
       <Popover
@@ -35,7 +35,11 @@ export default function EditDestination(props) {
           <FocusLock returnFocus persistentFocus={false}>
             <PopoverArrow/>
             <PopoverCloseButton/>
-            <PopoverForm firstFieldRef={firstFieldRef} onCancel={onClose} onClick={onClick} props={props}/>
+            <PopoverForm 
+              firstFieldRef={firstFieldRef} 
+              onCancel={onClose} 
+              onClick={onClick} 
+              props={props}/>
           </FocusLock>
         </PopoverContent>
       </Popover>
