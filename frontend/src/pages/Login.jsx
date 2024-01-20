@@ -17,8 +17,10 @@ import { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
+	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [isHidden, setisHidden] = useState(true);
@@ -45,7 +47,9 @@ export default function Login() {
 			const value = decodedToken[key];
 			localStorage.setItem(key, value);
 		}
-    localStorage.setItem('token', token);
+		localStorage.setItem("token", token);
+		navigate("/dashboard");
+
 		// } catch (error) {
 		// 	console.log(error);
 		// }
@@ -153,17 +157,17 @@ export default function Login() {
 										/>
 									</InputGroup>
 								</FormControl>
-								<HStack justify="space-between">
-									<Button variant="text" size="sm">
-										Forgot password?
+								<Stack
+									spacing="6"
+									style={{ marginTop: "20px" }}>
+									<Button type="submit">Sign In</Button>
+									<Button as={Link} to="/signup">
+										Sign Up
 									</Button>
-								</HStack>
-								<Stack spacing="6">
-									<Button type="submit">Sign in</Button>
 									<HStack>
 										<Divider />
 									</HStack>
-								</Stack>{" "}
+								</Stack>
 							</form>
 						</Stack>
 					</Stack>

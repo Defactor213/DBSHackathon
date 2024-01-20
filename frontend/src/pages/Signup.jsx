@@ -16,7 +16,8 @@ const Signup = () => {
 	const navigate = useNavigate();
 
 	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [LastName, setLastName] = useState("");
 	const [password, setPassword] = useState("");
 
 	const handleSignup = async (event) => {
@@ -25,11 +26,13 @@ const Signup = () => {
 			const response = await axios.post("http://localhost:9000/signup", {
 				username,
 				password,
+				firstName,
+				LastName
 			});
 
 			console.log("Signup successful:", response.data);
 			localStorage.setItem("username", username);
-			navigate("/homepage");
+			navigate("/login");
 		} catch (error) {
 			console.error(
 				"Error during login:",
@@ -50,6 +53,26 @@ const Signup = () => {
 			</Text>
 			<form onSubmit={handleSignup} width="100%">
 				<FormControl mb="4">
+					<FormLabel>First Name</FormLabel>
+					<Input
+						type="text"
+						variant="outline"
+						autoFocus
+						value={firstName}
+						onChange={(e) => setFirstName(e.target.value)}
+					/>
+				</FormControl>
+				<FormControl mb="4">
+					<FormLabel>Last Name</FormLabel>
+					<Input
+						type="text"
+						variant="outline"
+						autoFocus
+						value={LastName}
+						onChange={(e) => setLastName(e.target.value)}
+					/>
+				</FormControl>
+				<FormControl mb="4">
 					<FormLabel>Username</FormLabel>
 					<Input
 						type="text"
@@ -57,15 +80,6 @@ const Signup = () => {
 						autoFocus
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
-					/>
-				</FormControl>
-				<FormControl mb="4">
-					<FormLabel>Email</FormLabel>
-					<Input
-						type="email"
-						variant="outline"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl mb="4">
