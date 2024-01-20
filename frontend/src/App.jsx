@@ -17,7 +17,16 @@ import { useState } from 'react'
 import './App.css'
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Login from "./pages/Login.jsx";
+import { useState } from "react";
+import "./App.css";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Navigate,
+} from "react-router-dom";
 
+import ShowItinerary from "./pages/showItinerary";
 
 const App = () => {
   return (
@@ -42,4 +51,5 @@ const App = () => {
 }
 
 
-export default App
+
+export default App;
