@@ -7,9 +7,10 @@ import {
 	useColorModeValue,
 	useDisclosure,
 	Button,
+	Link
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NavLink = (props) => {
 	let children;
@@ -63,7 +64,7 @@ export default function NavBar(props) {
 						spacing={4}
 						display={{ base: "none", md: "flex" }}>
 						{Links.map((link) => (
-							<NavLink key={link}>{link}</NavLink>
+							<Link href={'/dashboard'}>Dashboard</Link>
 						))}
 					</HStack>
 				</HStack>
@@ -83,9 +84,7 @@ export default function NavBar(props) {
 			{isOpen ? (
 				<Box pb={4} display={{ md: "none" }}>
 					<Stack as={"nav"} spacing={4}>
-						{Links.map((link) => (
-							<NavLink key={link}>{link}</NavLink>
-						))}
+						<Link href={'/'}>Dashboard</Link>
 					</Stack>
 				</Box>
 			) : null}

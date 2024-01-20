@@ -67,14 +67,14 @@ const ShowItinerary = () => {
 			<Heading style={{ textAlign: "left" }}>Itinerary Details</Heading>
 			{itinerary ? (
 				<>
-					<div style={{ textAlign: "left" }}>
-						<Text>
-							<strong>Title:</strong> {itinerary.title}
-						</Text>
-						<Text>
-							<strong>Budget:</strong> {itinerary.budget}
-						</Text>
-					</div>
+					{/*<div style={{ textAlign: "left" }}>*/}
+					{/*	<Text>*/}
+					{/*		<strong>Title:</strong> {itinerary.title}*/}
+					{/*	</Text>*/}
+					{/*	<Text>*/}
+					{/*		<strong>Budget:</strong> {itinerary.budget}*/}
+					{/*	</Text>*/}
+					{/*</div>*/}
 					<div
 						style={{
 							display: "flex",
