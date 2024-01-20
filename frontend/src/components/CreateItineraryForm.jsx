@@ -1,15 +1,40 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Stack, Button, ButtonGroup, FormControl, FormLabel, Select} from '@chakra-ui/react'
 import TextInput from './TextInput.jsx'
+import {getRequest, postRequest} from "../utilites/axios.js";
 
 const CreateItineraryForm = ({ firstFieldRef, onCancel }) => {
-    const [title, setTitle] = React.useState('')
-    const [budget, setBudget] = React.useState('')
-    const onClick = () => {
-        // AXIOS POST REQUEST HERE
-        onClose()
-        return
+  const [title, setTitle] = React.useState('')
+  const [budget, setBudget] = React.useState('')
+  const [countries, setCountries] = useState([])
+
+  const createItinerary = () => {
+    try {
+      const result = postRequest('/itinerary/postItinerary', {
+        title: title,
+        budget: budget,
+        country_id: 1
+      }).then((res) => {
+        console.log(res)
+        onCancel()
+      })
+    } catch (err) {
+      console.log(err)
     }
+  }
+
+  useEffect(() => {
+    try {
+      const country = getRequest('/destination/getallcountry').then((res) => {
+        // setCountries(res)
+        console.log(res.Countries)
+        setCountries(res.Countries)
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
+
         return (
             <Stack spacing={4}>
                     <TextInput
@@ -27,17 +52,20 @@ const CreateItineraryForm = ({ firstFieldRef, onCancel }) => {
                         />
                     <FormControl>
                         <FormLabel>Country</FormLabel>
-                        <Select placeholder='Country'>
-                        <option value='option1'>Option 1</option>
-                        <option value='option2'>Option 2</option>
-                        <option value='option3'>Option 3</option>
+                        <Select>
+                          {
+                            countries.map((country) => (
+                              <option key={country.id}>{country.name}</option>
+                            ))
+                          }
                         </Select>
+
                     </FormControl>
                 <ButtonGroup display='flex' justifyContent='flex-end'>
                     <Button variant='outline' onClick={onCancel}>
                         Cancel
                     </Button>
-                    <Button colorScheme='teal' onClick={onClick}>
+                    <Button colorScheme='teal' onClick={createItinerary}>
                         Save
                     </Button>
                 </ButtonGroup>

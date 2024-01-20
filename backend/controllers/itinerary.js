@@ -9,17 +9,17 @@ const getUserItineraries = async (req, res) => {
         const userId = req.user.id;
         const itineraryData = await poolQuery(
             `SELECT
-            itinerary.id AS itinerary_id,
-            itinerary.country_id,
-            itinerary.user_id,
-            itinerary.budget,
-            itinerary.title,
-            GROUP_CONCAT(DISTINCT destination.name SEPARATOR ', ') AS destination_names
+                itinerary.id AS itinerary_id,
+                itinerary.country_id,
+                itinerary.user_id,
+                itinerary.budget,
+                itinerary.title,
+                IFNULL(GROUP_CONCAT(DISTINCT destination.name SEPARATOR ', '), NULL) AS destination_names
             FROM
                 itinerary
-            JOIN
+            LEFT JOIN
                 itinerary_destination ON itinerary.id = itinerary_destination.itinerary_id
-            JOIN
+            LEFT JOIN
                 destination ON itinerary_destination.destination_id = destination.id
             WHERE
                 itinerary.user_id = ?

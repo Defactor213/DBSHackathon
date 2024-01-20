@@ -4,6 +4,8 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import EditDestination from "../components/destinationComponents/EditDestination.jsx";
 import NavBar from "../components/NavBar.jsx";
+import {useEffect, useState} from "react";
+import {getRequest} from "../utilites/axios.js";
 import CreateDestinationPopover from "../components/destinationComponents/CreateDestinationPopover.jsx";
 
 
@@ -18,17 +20,24 @@ const ShowItinerary = () => {
 		destination1: { id: 1, name: "marina", cost: "10", notes: "lorem" },
 		destination2: { id: 2, name: "test", cost: "10", notes: "lorem" },
 	};
-	// const [itinerary, setitinerary] = useState("lorem ipsum");
-	const handleDelete = async (id) => {
-		try {
-			const path = `destination/delete/${id}`;
-			const result = await getRequest(path);
-			console.log("GET request successful:", result);
-		} catch (error) {
-			console.error("Error making GET request:", error);
-		}
-		return;
-	};
+
+
+	// useEffect(() => {
+	// 	const fetchItinerary = async () => {
+	// 		try {
+	// 			const response = await axios
+	// 				.get
+	// 				// `${backendUrl}/transactions/${id}`
+	// 				();
+
+	// 			// setitinerary(response.data);
+	// 		} catch (error) {
+	// 			console.error("Error fetching transaction:", error);
+	// 		}
+	// 	};
+
+	// 	fetchItinerary();
+	// }, [id]);
 
 	return (
 		<div>
