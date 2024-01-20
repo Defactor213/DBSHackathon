@@ -53,18 +53,56 @@ const getItinerary = async (req, res) => {
     }
 };
 
+// post itinerary
 const postItinerary = async (req, res) => {
     try {
-        // const { country, user, budget, title } = req.body;
+        const user_id = req.user.id;
+        const {
+            country_id,
+            budget,
+            title
+        } = req.body;
 
-        // const [{ insertId }] = await poolQuery(
-        //     `INSERT INTO users (name, address, country) 
-        //       VALUES (?, ?,?)`,
-        //     [name, address, country]
-        // );
-        // res.status(202).json({
-        //     message: "User Created",
-        // });
+        console.log([user_id, country_id, budget, title])
+
+        await poolQuery(
+            `INSERT INTO itinerary (user_id, country_id, budget, title)
+              VALUES (?, ?, ?, ?)`
+              ,
+            [user_id, country_id, budget, title]
+        );
+        res.status(202).json({
+            message: "Itinerary Created",
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: err,
+        });
+    }
+};
+
+// patch itinerary
+const patchItinerary = async (req, res) => {
+    try {
+        const itineraryId = req.params.id;
+        const {
+            country_id,
+            budget,
+            title
+        } = req.body;
+
+        console.log([country_id, budget, title])
+
+        await poolQuery(
+            `UPDATE itinerary
+            SET country_id = ?, budget = ?, title = ?
+            WHERE id = ?;`
+              ,
+            [country_id, budget, title, itineraryId]
+        );
+        res.status(202).json({
+            message: "Itinerary Edited",
+        });
     } catch (err) {
         res.status(500).json({
             message: err,
@@ -77,4 +115,5 @@ module.exports = {
     getUserItineraries,
     getItinerary,
     postItinerary,
+    patchItinerary
 };
