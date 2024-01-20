@@ -30,29 +30,25 @@ export default function Login() {
 		console.log(username, password);
 		console.log("submited");
 
-		// try {
-		// 	const response = await axios.post(
-		// 		"http://localhost:8000/user/userLogin",
-		// 		{
-		// 			username: username,
-		// 			password: password,
-		// 		}
-		// 	);
-
-		// const token = response.data.token;
-		const token =
-			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVtaWx5c21pdGgiLCJpZCI6MiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IlNtaXRoIiwiaWF0IjoxNzA1NzI3NjY0LCJleHAiOjE3MDU5MDA0NjR9.GwG4Z00DABbPUBB2Y9EUBT_oaTc4Z2LfqJk1LfUIWa4";
-		const decodedToken = jwtDecode(token);
-		for (const key in decodedToken) {
-			const value = decodedToken[key];
-			localStorage.setItem(key, value);
+		try {
+			const response = await axios.post(
+				"http://localhost:8000/user/userLogin",
+				{
+					username: username,
+					password: password,
+				}
+			);
+			const token = response.data["jwtToken "];
+			const decodedToken = jwtDecode(token);
+			for (const key in decodedToken) {
+				const value = decodedToken[key];
+				localStorage.setItem(key, value);
+			}
+			localStorage.setItem("token", token);
+			navigate("/dashboard");
+		} catch (error) {
+			console.log(error);
 		}
-		localStorage.setItem("token", token);
-		navigate("/dashboard");
-
-		// } catch (error) {
-		// 	console.log(error);
-		// }
 	};
 
 	const setPasswordVisibility = () =>
