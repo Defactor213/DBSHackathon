@@ -7,6 +7,8 @@ import EditDestination from "../components/destinationComponents/EditDestination
 import NavBar from "../components/NavBar.jsx";
 
 
+// const backendUrl = "http://localhost:9000";
+
 const ShowItinerary = () => {
 
 	const location = useLocation();
@@ -17,6 +19,24 @@ const ShowItinerary = () => {
 		destination1: { id: 1, name: "marina", cost: "10", notes: "lorem" },
 		destination2: { id: 2, name: "test", cost: "10", notes: "lorem" },
 	};
+	// const [itinerary, setitinerary] = useState("lorem ipsum");
+
+	// useEffect(() => {
+	// 	const fetchItinerary = async () => {
+	// 		try {
+	// 			const response = await axios
+	// 				.get
+	// 				// `${backendUrl}/transactions/${id}`
+	// 				();
+
+	// 			// setitinerary(response.data);
+	// 		} catch (error) {
+	// 			console.error("Error fetching transaction:", error);
+	// 		}
+	// 	};
+
+	// 	fetchItinerary();
+	// }, [id]);
 
 	return (
 		<div>
@@ -40,7 +60,7 @@ const ShowItinerary = () => {
 							justifyContent: "space-between",
 						}}>
 						<Heading size="md">Destinations</Heading>
-						<Button onClick={() => navigate("/")}>
+						<Button onClick={() => navigate("/homepage")}>
 							Back to Itinerary List
 						</Button>
 					</div>
