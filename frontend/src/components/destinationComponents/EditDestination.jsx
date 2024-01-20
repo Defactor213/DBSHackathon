@@ -45,7 +45,6 @@ export default function EditDestination(props) {
             <PopoverForm 
               firstFieldRef={firstFieldRef} 
               onCancel={onClose} 
-              onClick={onClick} 
               props={props}/>
           </FocusLock>
         </PopoverContent>

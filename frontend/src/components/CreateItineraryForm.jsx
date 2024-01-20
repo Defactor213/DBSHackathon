@@ -2,20 +2,29 @@ import React from 'react'
 import { Stack, Button, ButtonGroup, FormControl, FormLabel, Select} from '@chakra-ui/react'
 import TextInput from './TextInput.jsx'
 
-const CreateItineraryForm = ({ firstFieldRef, onCancel, onClick, props }) => {
+const CreateItineraryForm = ({ firstFieldRef, onCancel }) => {
+    const [title, setTitle] = React.useState('')
+    const [budget, setBudget] = React.useState('')
+    const onClick = () => {
+        // AXIOS POST REQUEST HERE
+        onClose()
+        return
+    }
         return (
             <Stack spacing={4}>
                     <TextInput
                         label='Title'
                         id='title'
                         ref={firstFieldRef}
-                        // defaultValue={props.title}
-                    />
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        />
                     <TextInput 
                         label='Budget (SGD)' 
                         id='budget' 
-                        // defaultValue={props.budget}
-                    />
+                        value={budget}
+                        onChange={(e) => setBudget(e.target.value)}
+                        />
                     <FormControl>
                         <FormLabel>Country</FormLabel>
                         <Select placeholder='Country'>
