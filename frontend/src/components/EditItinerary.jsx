@@ -1,20 +1,28 @@
 import {
-  Button, Flex,
-  FocusLock, FormControl, FormLabel,
-  IconButton, Input,
+  Button,
+  Flex,
+  FocusLock,
+  FormControl,
+  FormLabel,
+  Input,
   Popover,
   PopoverArrow,
   PopoverCloseButton,
   PopoverContent,
   PopoverTrigger, Select, useDisclosure
 } from "@chakra-ui/react";
-import {useRef} from "react";
+import {useRef, useState} from "react";
 
 export default function EditItinerary(props) {
-  // const { itinerary } = props
-  // const { id, title, budget, country } = itinerary
+  const { itinerary } = props
+  const { id, title, budget, country } = itinerary
   const { onOpen, onClose, isOpen } = useDisclosure()
   const firstFieldRef = useRef(null)
+
+  const [newTitle, setNewTitle] = useState(title)
+  const [newBudget, setNewBudget] = useState(budget)
+  const [newCountryId, setNewCountryId] = useState(country)
+
   return (
     <div style={{textAlign: "center"}}>
       <Popover
@@ -35,11 +43,11 @@ export default function EditItinerary(props) {
             <Flex flexDirection='column' gap={4}>
               <FormControl>
                 <FormLabel>Title</FormLabel>
-                <Input type='text' />
+                <Input type='text' value={newTitle} onClick={e => setNewTitle(e.value)} />
               </FormControl>
               <FormControl>
                 <FormLabel>Budget</FormLabel>
-                <Input type='text' />
+                <Input type='text' value={newBudget} onClick={e => setNewBudget( e.value)}/>
               </FormControl>
               <FormControl>
                 <FormLabel>Country</FormLabel>

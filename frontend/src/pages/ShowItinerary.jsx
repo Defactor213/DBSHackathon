@@ -71,7 +71,12 @@ const ShowItinerary = () => {
 									<Td>{destination.cost}</Td>
 									<Td>{destination.notes}</Td>
 									<Td>
-										<EditDestination/>
+										<EditDestination
+											name={destination.name}
+											cost={destination.cost}
+											notes={destination.notes}
+											id={destination.id}
+										/>
 									</Td>
 									<Td>
 										<div style={{ textAlign: "center" }}>

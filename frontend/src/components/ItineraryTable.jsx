@@ -61,7 +61,7 @@ export default function ItineraryTable(props) {
                     <Td>
                       <Flex gap={2}>
                             <Button onClick={() => navigate(`showitinerary?id=${row.id}`)}  colorScheme={'green'} variant='outline'>View</Button>
-                            <EditItinerary id={row.id}/>
+                            <EditItinerary itinerary={row}/>
                         <Button colorScheme={'red'} variant='outline'>Delete</Button>
                       {/*{*/}
                       {/*  buttons.map((button) => (*/}
