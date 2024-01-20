@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Button, ButtonGroup } from '@chakra-ui/react'
+import { Stack, Button, ButtonGroup, FormControl, FormLabel, Select} from '@chakra-ui/react'
 import TextInput from './TextInput.jsx'
 
 const CreateItineraryForm = ({ firstFieldRef, onCancel, onClick, props }) => {
@@ -16,11 +16,14 @@ const CreateItineraryForm = ({ firstFieldRef, onCancel, onClick, props }) => {
                         id='budget' 
                         // defaultValue={props.budget}
                     />
-                    <TextInput 
-                        label='Country' 
-                        id='country' 
-                        // defaultValue={props.country}
-                    />
+                    <FormControl>
+                        <FormLabel>Country</FormLabel>
+                        <Select placeholder='Country'>
+                        <option value='option1'>Option 1</option>
+                        <option value='option2'>Option 2</option>
+                        <option value='option3'>Option 3</option>
+                        </Select>
+                    </FormControl>
                 <ButtonGroup display='flex' justifyContent='flex-end'>
                     <Button variant='outline' onClick={onCancel}>
                         Cancel
