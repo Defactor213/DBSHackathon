@@ -12,13 +12,10 @@ const authenticationToken = async (req, res, next) => {
     if (err) {
       return res.status(400).json({ "error ": "Unauthorised token" });
     }
+    console.log("Decoded user : ", user);
+    req.user = user;
+    next();
   });
-
-  console.log("Decoded user ", user);
-  console.log("Request method ", req.method);
-
-  req.user = user;
-  next();
 };
 
 module.exports = { authenticationToken };
