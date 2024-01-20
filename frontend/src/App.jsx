@@ -1,35 +1,95 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  Divider,
+  FormControl,
+  FormLabel,
+  Heading,
+  HStack,
+  Input,
+  Stack,
+} from '@chakra-ui/react'
+import { PasswordField } from './components/PasswordField'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App = () => (
+    <Container
+      maxW="lg"
+      py={{
+        base: '12',
+        md: '24',
+      }}
+      px={{
+        base: '0',
+        sm: '8',
+      }}
+    >
+      <Stack spacing="8">
+        <Stack spacing="6">
+          <Stack
+            spacing={{
+              base: '2',
+              md: '3',
+            }}
+            textAlign="center"
+          >
+            <Heading
+              size={{
+                base: 'xs',
+                md: 'sm',
+              }}
+            >
+              Log in to your account
+            </Heading>
+          </Stack>
+        </Stack>
+        <Box
+          py={{
+            base: '0',
+            sm: '8',
+          }}
+          px={{
+            base: '4',
+            sm: '10',
+          }}
+          bg={{
+            base: 'transparent',
+            sm: 'bg.surface',
+          }}
+          boxShadow={{
+            base: 'none',
+            sm: 'md',
+          }}
+          borderRadius={{
+            base: 'none',
+            sm: 'xl',
+          }}
+        >
+          <Stack spacing="6">
+            <Stack spacing="5">
+              <FormControl>
+                <FormLabel htmlFor="email">Email</FormLabel>
+                <Input id="email" type="email" />
+              </FormControl>
+              <PasswordField />
+            </Stack>
+            <HStack justify="space-between">
+              <Checkbox defaultChecked>Remember me</Checkbox>
+              <Button variant="text" size="sm">
+                Forgot password?
+              </Button>
+            </HStack>
+            <Stack spacing="6">
+              <Button>Sign in</Button>
+              <HStack>
+                <Divider />
+              </HStack>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Container>
+)
 
 export default App
