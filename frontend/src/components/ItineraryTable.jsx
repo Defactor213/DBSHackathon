@@ -1,11 +1,17 @@
 import {Table, TableContainer, Tbody, Tr, Td, Th, Thead, Tfoot, Button, Flex} from "@chakra-ui/react";
 import {useNavigate} from "react-router-dom";
 import EditItinerary from "./EditItinerary.jsx";
+import {useEffect} from "react";
+import {getRequest} from "../utilites/axios.js";
 
 export default function ItineraryTable(props) {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const result = getRequest('/itinerary/getItineraries/user')
+    console.log(result)
+  },[])
 
   const tableTitles = ['Title', 'Budget', 'Country', 'Destination', 'Actions'];
   const data = [
