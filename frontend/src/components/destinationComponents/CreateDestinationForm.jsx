@@ -2,13 +2,12 @@ import { useState } from 'react'
 import { Stack, Button, ButtonGroup, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import TextInput from '../TextInput.jsx'
 
-const PopoverForm = ({ firstFieldRef, onCancel, onClose, props }) => {
-    const [destID, setDestID] = useState(props.id) // [id, setter
-    const [destName, setDestName] = useState(props.name)
-    const [destCost, setDestCost] = useState(props.cost)
-    const [destNotes, setDestNotes] = useState(props.notes)
+const CreateDestinationForm = ({ firstFieldRef, onCancel, onClose }) => {
+    const [destName, setDestName] = useState('')
+    const [destCost, setDestCost] = useState('')
+    const [destNotes, setDestNotes] = useState('')
     const onClick = () => {
-        // AXIOS PUT REQUEST HERE
+        // AXIOS POST REQUEST HERE
       onClose()
       return
     }
@@ -45,4 +44,4 @@ const PopoverForm = ({ firstFieldRef, onCancel, onClose, props }) => {
     )
 }
 
-export default PopoverForm
+export default CreateDestinationForm
