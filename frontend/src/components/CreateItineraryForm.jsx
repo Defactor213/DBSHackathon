@@ -3,7 +3,7 @@ import { Stack, Button, ButtonGroup, FormControl, FormLabel, Select} from '@chak
 import TextInput from './TextInput.jsx'
 import {getRequest, postRequest} from "../utilites/axios.js";
 
-const CreateItineraryForm = ({ firstFieldRef, onCancel }) => {
+const CreateItineraryForm = ({ firstFieldRef, onCancel, loadItinerary }) => {
   const [title, setTitle] = React.useState('')
   const [budget, setBudget] = React.useState('')
   const [countries, setCountries] = useState([])
@@ -16,6 +16,7 @@ const CreateItineraryForm = ({ firstFieldRef, onCancel }) => {
         country_id: 1
       }).then((res) => {
         console.log(res)
+        loadItinerary()
         onCancel()
       })
     } catch (err) {

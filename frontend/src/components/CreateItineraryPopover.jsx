@@ -12,6 +12,7 @@ import {useEffect, useRef, useState} from "react";
 import {getRequest} from "../utilites/axios.js";
   
 export default function CreateItineraryPopover(props) {
+    const {loadItinerary} = props
 const { onOpen, onClose, isOpen } = useDisclosure()
 const firstFieldRef = useRef(null)
 return (
@@ -31,7 +32,7 @@ return (
         <FocusLock returnFocus persistentFocus={false}>
             <PopoverArrow/>
             <PopoverCloseButton/>
-            <CreateItineraryForm firstFieldRef={firstFieldRef} onCancel={onClose}/>
+            <CreateItineraryForm firstFieldRef={firstFieldRef} onCancel={onClose} loadItinerary={loadItinerary}/>
         </FocusLock>
         </PopoverContent>
     </Popover>
