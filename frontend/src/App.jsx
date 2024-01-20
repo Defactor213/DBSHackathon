@@ -8,12 +8,10 @@ import {
 } from "react-router-dom";
 import ProtectedRoute from "./components/protectedRoute";
 
-import Login from "./pages/login";
-import Signup from "./pages/singup";
 import ShowItinerary from "./pages/showItinerary";
-import Dashboard from "./pages/dashboard";
 
 function App() {
+
 	//   <Routes>
 	//   {/* landing page */}
 	//   <Route index element={<Navigate to="/login" />} />
@@ -34,13 +32,7 @@ function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route index element={<Navigate to="/login" />} />
-
-				<Route path="/" element={<Login />} />
-				<Route path="/" element={<Signup />} />
-
-				<Route element={<ProtectedRoute />}>
-					<Route path="/" element={<Dashboard />} />
+				<Route>
 					<Route path="/" element={<ShowItinerary />} />
 				</Route>
 			</Routes>

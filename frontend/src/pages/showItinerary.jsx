@@ -6,9 +6,9 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { EditIcon } from '@chakra-ui/icons';
 import { Popover, PopoverTrigger, IconButton, PopoverContent, FocusLock, PopoverArrow, PopoverCloseButton } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/react';
-import PopoverForm from "../components/destinationComponents/PopoverForm";
-import TextInput from "../components/destinationComponents/TextInput";
+import PopoverForm from '../components/destinationComponents/PopoverForm'
+import { useDisclosure } from '@chakra-ui/react'
+
 
 // const backendUrl = "http://localhost:9000";
 
@@ -23,7 +23,6 @@ const ShowItinerary = () => {
 		destination1: { id: 1, name: "marina", cost: "10", notes: "lorem" },
 		destination2: { id: 2, name: "test", cost: "10", notes: "lorem" },
 	};
-
 	// const [itinerary, setitinerary] = useState("lorem ipsum");
 
 	// useEffect(() => {
@@ -96,7 +95,7 @@ const ShowItinerary = () => {
 								<Tr key={destination.id}>
 									<Td>{destination.id}</Td>
 									<Td>{destination.name}</Td>
-									<Td>${destination.cost}</Td>
+									<Td>{destination.cost}</Td>
 									<Td>{destination.notes}</Td>
 									<Td>
 										<div style={{ textAlign: "center" }}>
@@ -144,4 +143,4 @@ const ShowItinerary = () => {
 	);
 };
 
-export default ShowItinerary;
+export default ShowItinerary
