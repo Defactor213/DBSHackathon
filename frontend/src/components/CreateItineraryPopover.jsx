@@ -30,7 +30,7 @@ return (
         <FocusLock returnFocus persistentFocus={false}>
             <PopoverArrow/>
             <PopoverCloseButton/>
-            <CreateItineraryForm firstFieldRef={firstFieldRef} onCancel={onClose} props={props}/>
+            <CreateItineraryForm firstFieldRef={firstFieldRef} onCancel={onClose}/>
         </FocusLock>
         </PopoverContent>
     </Popover>
