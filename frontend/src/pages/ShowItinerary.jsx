@@ -1,16 +1,12 @@
-
 import { useLocation, useNavigate } from "react-router-dom";
 import { Text, Button } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import EditDestination from "../components/destinationComponents/EditDestination.jsx";
 import NavBar from "../components/NavBar.jsx";
-
-
-// const backendUrl = "http://localhost:9000";
+import { getRequest } from "../utilites/axios.js";
 
 const ShowItinerary = () => {
-
 	const location = useLocation();
 	const navigate = useNavigate();
 	const queryParams = new URLSearchParams(location.search);
@@ -20,28 +16,20 @@ const ShowItinerary = () => {
 		destination2: { id: 2, name: "test", cost: "10", notes: "lorem" },
 	};
 	// const [itinerary, setitinerary] = useState("lorem ipsum");
-
-	// useEffect(() => {
-	// 	const fetchItinerary = async () => {
-	// 		try {
-	// 			const response = await axios
-	// 				.get
-	// 				// `${backendUrl}/transactions/${id}`
-	// 				();
-
-	// 			// setitinerary(response.data);
-	// 		} catch (error) {
-	// 			console.error("Error fetching transaction:", error);
-	// 		}
-	// 	};
-
-	// 	fetchItinerary();
-	// }, [id]);
+	const handleDelete = async (id) => {
+		try {
+			const path = `destination/delete/${id}`;
+			const result = await getRequest(path);
+			console.log("GET request successful:", result);
+		} catch (error) {
+			console.error("Error making GET request:", error);
+		}
+		return;
+	};
 
 	return (
 		<div>
 			<NavBar />
-			{/* add header here*/}
 
 			<Heading style={{ textAlign: "left" }}>Itinerary Details</Heading>
 			{itinerary ? (
@@ -100,7 +88,11 @@ const ShowItinerary = () => {
 									</Td>
 									<Td>
 										<div style={{ textAlign: "center" }}>
-											<Button colorScheme={"red"}>
+											<Button
+												colorScheme={"red"}
+												onClick={() =>
+													handleDelete(destination.id)
+												}>
 												Delete
 											</Button>
 										</div>
@@ -121,4 +113,4 @@ const ShowItinerary = () => {
 	);
 };
 
-export default ShowItinerary
+export default ShowItinerary;

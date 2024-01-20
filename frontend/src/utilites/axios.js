@@ -32,6 +32,23 @@ const postRequest = async (path, data) => {
 	}
 };
 
+const deleteRequest = async (path, data) => {
+	const token = localStorage.getItem("token");
+	console.log("delet req token ", token);
+	try {
+		const response = await axios.delete(`${url}/${path}`, data, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		return response.data;
+	} catch (error) {
+		// Handle error
+		console.error("Error making DELETE request:", error);
+		throw error;
+	}
+};
+
 const patchRequest = async (path, data) => {
 	try {
 		const response = await axios.patch(`${url}/${path}`, data, {
@@ -46,4 +63,4 @@ const patchRequest = async (path, data) => {
 		throw error;
 	}
 };
-export { getRequest, postRequest,patchRequest };
+export { getRequest, postRequest, patchRequest, deleteRequest };
