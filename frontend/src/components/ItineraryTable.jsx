@@ -58,13 +58,13 @@ export default function ItineraryTable(props) {
                 <Tr key={row.itinerary_id}>
                   <Td>{row.title}</Td>
                   <Td>{`$${row.budget}`}</Td>
-                  <Td>{row.country_id}</Td>
+                  <Td>{row.country_id === 1 ? 'Singapore' : 'Not Found'}</Td>
                   <Td>{row.destination_names}</Td>
 
                     <Td>
                       <Flex gap={2}>
                             <Button onClick={() => navigate(`showitinerary?id=${row.itinerary_id}`)}  colorScheme={'green'} variant='outline'>View</Button>
-                            <EditItinerary itinerary={row}/>
+                            <EditItinerary itinerary={row} loadItinerary={loadItinerary}/>
                         <Button colorScheme={'red'} variant='outline' onClick={() => deleteItinerary(row.itinerary_id)}>Delete</Button>
                       </Flex>
                     </Td>

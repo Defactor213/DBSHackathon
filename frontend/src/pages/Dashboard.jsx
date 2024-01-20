@@ -16,7 +16,7 @@ export default function Dashboard(props) {
   const loadItinerary = () => {
     try {
       const result = getRequest('/itinerary/getItineraries/user').then((res) => {
-        console.log(res.itinerary)
+
         setItinerary(res.itinerary)
       })
     } catch (err) {
