@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
 	Stack,
 	Button,
@@ -11,11 +11,11 @@ import TextInput from "../TextInput.jsx";
 import { patchRequest } from "../../utilites/axios.js";
 
 const PopoverForm = ({ firstFieldRef, onCancel, onClick, props }) => {
-	const [destID, setDestID] = useState(props.id) // [id, setter
+	const [destID, setDestID] = useState(props.id); // [id, setter
 
 	const handleUpdate = async (e) => {
 		try {
-			const path = "destination/update";
+			const path = `destination/update/${destID}`;
 			const postData = {
 				destination_name:
 					document.getElementById("destination_name").value,
